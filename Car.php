@@ -47,7 +47,7 @@ class Car extends Vehicle
         }
         $sentence = "";
         $this->energyLevel--;
-        $sentence = "Ma voiture roule comme un donut";
+        $sentence = "En voiture";
         return $sentence;
     }
 

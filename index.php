@@ -16,6 +16,7 @@ require_once 'Skateboard.php';
 
 $alfa = new Car('grey',4,'fuel');
 $alfa->setParkBrake(true);
+$alfa->setEnergyLevel(0);
 var_dump($alfa);
 
 try {
@@ -23,33 +24,24 @@ try {
 } catch (NoMoreEnergyException $e){
     echo "Exception received  : ". $e->getMessage() . "<br/>";
     $alfa->setEnergyLevel(30);
-} catch (Exception $e){
-    // code to manage exceptions
-    echo "Exception received  : ". $e->getMessage() . "<br/>";
-    $alfa->setParkBrake(false);
-} finally{
     try {
         echo $alfa->start();
-    } catch (NoMoreEnergyException $e){
-        echo "Exception received  : ". $e->getMessage() . "<br/>";
-        $alfa->setEnergyLevel(30);
     } catch (Exception $e){
-        // code to manage exceptions
         echo "Exception received  : ". $e->getMessage() . "<br/>";
         $alfa->setParkBrake(false);
-    } finally {
-        echo "Ma voiture roule comme un donut";
     }
+} catch (Exception $e){
+    echo "Exception received  : ". $e->getMessage() . "<br/>";
+    $alfa->setParkBrake(false);
+    echo $alfa->start();
+} finally{
+    echo "Ma voiture roule comme un donut";
 }
 
 
 var_dump($alfa);
 
 
-$A7 = new MotorWay();
-var_dump($A7);
-$A7->addVehicle($twingo = new Car('green',4,'fuel'));
-$A7->addVehicle($master = new Truck('white',3,'fuel',50));
-var_dump($A7);
+
 
 
